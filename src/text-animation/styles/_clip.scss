@@ -1,0 +1,21 @@
+
+.cd-headline.clip {
+	.cd-words-wrapper {
+		overflow: hidden;
+		vertical-align: top;
+		white-space: nowrap;
+
+		.cursor {
+			width: 10px;
+			height: 100%;
+
+			position: absolute;
+			top: 0;
+			right: 0;
+			
+			border-radius: 6px;
+			background-color: black;
+		}
+	}
+}
+

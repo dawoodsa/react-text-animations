@@ -1,0 +1,66 @@
+
+
+$color-1: #aebcb9; // Tower Gray
+$color-2: #0096a7; // Bondi Blue
+$color-3: #0d0d0d; // Cod Gray
+
+// center vertically and/or horizontally an absolute positioned element
+body{
+	font-size: 3rem;
+	box-sizing: border-box;
+}
+
+
+.cd-words-wrapper {
+	display: inline-block;
+	position: relative;
+	text-align: left;
+
+	span{
+		white-space: nowrap;
+	}
+
+	.no-js & span {
+		opacity: 0;
+		
+		&.is-visible {
+			opacity: 1;
+		}
+
+	}
+}
+@import './clip';
+@import './rotate1';
+// @import "./bourbon/bourbon";
+
+// @import './clip';
+// @import './loading';
+// @import './push';
+// @import './rotate1';
+// @import './rotate2';
+// @import './rotate3';
+// @import './scale';
+// @import './slide';
+// @import './type';
+// @import './zoom';
+
+
+// @mixin center($xy:xy) {
+//     @if $xy == xy {
+//       left: 50%;
+//       top: 50%;
+//       bottom: auto;
+//       right: auto;
+//       @include transform(translateX(-50%) translateY(-50%));
+//     }
+//     @else if $xy == x {
+//       left: 50%;
+//       right: auto;
+//       @include transform(translateX(-50%));
+//     }
+//     @else if $xy == y {
+//       top: 50%;
+//       bottom: auto;
+//       @include transform(translateY(-50%));
+//     }
+//   }
