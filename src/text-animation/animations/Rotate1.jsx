@@ -5,37 +5,49 @@ import AnimationTemplate from '../AnimationTemplate';
 
 
 function Rotate1({ id, className, target, alternatingText, animation, children }) {
-    const wordStateInit = () => {
-        let initializer = ['visible'];
-        for (let i = 0; i < alternatingText.length - 1; i++) {
-            initializer.push('hidden');
-        }
-        return initializer;
-    }
-
-    const [wordState, setWordState] = useState(wordStateInit());
     const wordWrapper = useRef(null);
     const { delay, duration, timingFunction } = animation;
+    const InitWordState = (index) => {
+        return alternatingText.map((_, i) => (i == index) ? 'visible' : 'hidden')
+    }
+
+    const [wordState, setWordState] = useState(InitWordState(0));
+
 
     useEffect(() => {
-        setTimeout(() => {
-            wordWrapper.current.style.setProperty('--duration', duration + 'ms')
-            wordWrapper.current.style.setProperty('--timingFunction', timingFunction)
-        }, delay);
+        // setWrapperToMaxWidth();
+        setTimeout(setAnimationProperties, delay);
     }, [])
 
+
     useEffect(() => {
-        setTimeout(() => { next() }, delay);
+        setTimeout(playNext, delay);
     }, [wordState])
 
-    const next = () => {
-        let nextIndex;
-        const currentIndex = wordState.indexOf('visible');
-        (currentIndex == wordState.length - 1) ? nextIndex = 0 : nextIndex = currentIndex + 1;
-        const newWordState = wordState.concat().map((_, i) => nextIndex == i ? 'visible' : 'hidden')
-        setWordState(newWordState);
 
+    const getMaxWidth = (allWords) => {
+        return Array.from(allWords).reduce((curWidth, word) => {
+            if (word.offsetWidth > curWidth) curWidth = word.offsetWidth;
+            return curWidth;
+        }, 0)
     }
+    const setWrapperToMaxWidth = () => {
+        const allWords = wordWrapper.current.children;
+        wordWrapper.current.style.width = getMaxWidth(allWords) + 'px';
+    }
+    const setAnimationProperties = () => {
+        wordWrapper.current.style.setProperty('--duration', duration + 'ms')
+        wordWrapper.current.style.setProperty('--timingFunction', timingFunction)
+    }
+    const lastIndex = (i) => (i == wordState.length - 1) ? true : false;
+
+    const getNextIndex = (i) => (lastIndex(i)) ? 0 : i + 1;
+
+    const playNext = () => {
+        const nextIndex = getNextIndex(wordState.indexOf('visible'));
+        setWordState(InitWordState(nextIndex));
+    }
+    
     return (
         <AnimationTemplate className={className} id={id} name="rotate-1" target={target} sentence={children}>
             <span className="cd-words-wrapper" ref={wordWrapper}>
