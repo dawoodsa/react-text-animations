@@ -16,13 +16,9 @@ function Clip({ id, className, target, alternatingText, animation, children }) {
     }, [])
     useEffect(() => {
         if (wrapperWidth == cursor.current.offsetWidth) {
-            setTimeout(() => {
-                updateWord();
-            }, duration)
+            setTimeout(updateWord, duration)
         } else {
-            setTimeout(() => {
-                minimizeWidth();
-            }, delay)
+            setTimeout(minimizeWidth, delay)
         }
     }, [wrapperWidth])
 

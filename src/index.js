@@ -17,10 +17,10 @@ ReactDOM.render(
       alternatingText={["d ", "a", "d"]}
     >Programmers are cute</TextAnimation.Clip> */}
 
-    <TextAnimation.Rotate1
+    <TextAnimation.Clip
       target="cute"
       alternatingText={["dete", "love", "cute"]}
-    >Programmers are cute</TextAnimation.Rotate1>
+    >Programmers are cute</TextAnimation.Clip>
   </React.StrictMode>,
   document.getElementById('root')
 );
