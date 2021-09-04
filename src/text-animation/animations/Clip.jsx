@@ -43,15 +43,21 @@ function Clip({ id, className, target, alternatingText, animation, children }) {
 
     const wrapperStyle = {
         width: wrapperWidth,
-        transition: `all ${duration / 1000}s ${timingFunction}`
+        transition: `all ${duration}ms ${timingFunction}`
     }
 
     return (
-        <AnimationTemplate className={className} id={id} name="clip" target={target} sentence={children}>
-            <span className="cd-words-wrapper" style={wrapperStyle}>
+        <AnimationTemplate
+            name="clip"
+            target={target}
+            sentence={children}
+            id={id}
+            className={className}
+        >
+            <span className="words-wrapper" style={wrapperStyle}>
                 <span ref={word}>
                     <span className="word">{currentWord}</span>
-                    <span ref={cursor} className="cursor" />
+                    <span className="cursor" ref={cursor}/>
                 </span>
             </span>
         </AnimationTemplate>
@@ -69,9 +75,9 @@ Clip.defaultProps = {
     id: '',
     className: 'text-animation-clip',
     animation: {
-        delay: 3000,
+        delay: 2500,
         duration: 1000,
-        timingFunction: 'linear'
+        timingFunction: 'ease'
     },
 }
 

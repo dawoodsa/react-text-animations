@@ -55,9 +55,9 @@ function Slide({ id, className, target, alternatingText, animation, children }) 
             target={target} 
             sentence={children}
             id={id} 
-            className={className} 
+            className={className}
         >
-            <span className="cd-words-wrapper" ref={wordWrapper}>
+            <span className="words-wrapper" ref={wordWrapper}>
                 {alternatingText.map((_, i) => {
                     return <span className={`word ${wordState[i]}`} key={i} >{_}</span>
                 })}

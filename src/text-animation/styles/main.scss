@@ -11,15 +11,11 @@ body{
 }
 
 
-.cd-words-wrapper {
+.words-wrapper {
 	display: inline-block;
 	position: relative;
 	text-align: left;
-
-	.word{
-		white-space: nowrap;
-	}
-
+	white-space: nowrap;
 }
 @import './clip';
 @import './rotate1';

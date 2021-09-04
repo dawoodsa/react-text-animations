@@ -5,6 +5,7 @@ import AnimationTemplate from '../AnimationTemplate';
 
 
 function Rotate1({ id, className, target, alternatingText, animation, children }) {
+
     const wordWrapper = useRef(null);
     const { delay, duration, timingFunction } = animation;
     const InitWordState = (index) => {
@@ -15,7 +16,6 @@ function Rotate1({ id, className, target, alternatingText, animation, children }
 
 
     useEffect(() => {
-        // setWrapperToMaxWidth();
         setTimeout(setAnimationProperties, delay);
     }, [])
 
@@ -25,16 +25,6 @@ function Rotate1({ id, className, target, alternatingText, animation, children }
     }, [wordState])
 
 
-    const getMaxWidth = (allWords) => {
-        return Array.from(allWords).reduce((curWidth, word) => {
-            if (word.offsetWidth > curWidth) curWidth = word.offsetWidth;
-            return curWidth;
-        }, 0)
-    }
-    const setWrapperToMaxWidth = () => {
-        const allWords = wordWrapper.current.children;
-        wordWrapper.current.style.width = getMaxWidth(allWords) + 'px';
-    }
     const setAnimationProperties = () => {
         wordWrapper.current.style.setProperty('--duration', duration + 'ms')
         wordWrapper.current.style.setProperty('--timingFunction', timingFunction)
@@ -47,10 +37,16 @@ function Rotate1({ id, className, target, alternatingText, animation, children }
         const nextIndex = getNextIndex(wordState.indexOf('visible'));
         setWordState(InitWordState(nextIndex));
     }
-    
+
     return (
-        <AnimationTemplate className={className} id={id} name="rotate-1" target={target} sentence={children}>
-            <span className="cd-words-wrapper" ref={wordWrapper}>
+        <AnimationTemplate
+            name="rotate-1"
+            target={target}
+            sentence={children}
+            id={id}
+            className={className}
+        >
+            <span className="words-wrapper" ref={wordWrapper}>
                 {alternatingText.map((_, i) => {
                     return <span className={`word ${wordState[i]}`} key={i} >{_}</span>
                 })}
@@ -68,8 +64,8 @@ Rotate1.defaultProps = {
     id: '',
     className: 'text-animation-rotate1',
     animation: {
-        delay: 2000,
-        duration: 1200,
+        delay: 2500,
+        duration: 1000,
         timingFunction: 'ease'
     },
 }
