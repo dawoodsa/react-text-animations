@@ -5,17 +5,14 @@ import AnimationTemplate from '../AnimationTemplate';
 
 
 function Clip({ id, className, target, alternatingText, animation, children }) {
-
+    const { delay, duration, timingFunction } = animation;
     const [currentWord, setCurrentWord] = useState(alternatingText[0]);
     const [wrapperWidth, setWrapperWidth] = useState();
     const word = useRef(null);
     const cursor = useRef(null);
 
     useEffect(() => {
-        minimizeWidth();
-    }, [])
-    useEffect(() => {
-        if (wrapperWidth == cursor.current.offsetWidth) {
+        if (isClipped()) {
             setTimeout(updateWord, duration)
         } else {
             setTimeout(minimizeWidth, delay)
@@ -26,24 +23,23 @@ function Clip({ id, className, target, alternatingText, animation, children }) {
         maximizeWidth();
     }, [currentWord])
 
+    const isClipped = () => (wrapperWidth == cursor.current.offsetWidth) ? true : false
+
     const maximizeWidth = () => {
         setWrapperWidth(word.current.offsetWidth + 15);
     }
     const minimizeWidth = () => {
         setWrapperWidth(cursor.current.offsetWidth);
     }
+    const isLastWord = (i) => (i == alternatingText.length - 1) ? true : false;
     const updateWord = () => {
-        const currentIndex = alternatingText.indexOf(currentWord);
-        if (currentIndex === alternatingText.length - 1) {
+        const curIndex = alternatingText.indexOf(currentWord);
+        if (isLastWord(curIndex)) {
             setCurrentWord(alternatingText[0])
         } else {
-            setCurrentWord(alternatingText[currentIndex + 1])
+            setCurrentWord(alternatingText[curIndex + 1])
         }
     }
-
-
-    const { delay, duration, timingFunction } = animation;
-
 
     const wrapperStyle = {
         width: wrapperWidth,
@@ -63,12 +59,6 @@ function Clip({ id, className, target, alternatingText, animation, children }) {
 
 
 }
-
-/**
-   @param target A word, the animation will be applied to.
-   @param alternatingText A array holding the alternating words
-   @param animation the animation parameters
-*/
 
 Clip.propTypes = {
     target: PropTypes.string.isRequired,
