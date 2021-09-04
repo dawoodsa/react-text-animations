@@ -1,14 +1,31 @@
 .cd-headline.rotate-1 {
-
 	.cd-words-wrapper{
 		perspective: 300px;
+		
+		--duration: 0;
+		--timingFunction:ease;
 
+		.word {
+
+			display: inline-block;
+
+			position: absolute;
+			top:0;
+			left: 0;
+
+			opacity: 0;
+			transform-origin: 50% 100% ;
+		}
+		.visible{
+			position: relative;
+			opacity: 1;
+			animation: rotate-1-in var(--duration) var(--timingFunction);
+		}
+		.hidden{
+			opacity: 0;
+			animation: rotate-1-out var(--duration) var(--timingFunction);
+		}
 	}
-	.word {
-		display: inline-block;
-		transform-origin: 50% 100% ;
-		// transform: rotateX(-45deg);
-	}	
 }
 
 

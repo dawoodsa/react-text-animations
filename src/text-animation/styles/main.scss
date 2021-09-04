@@ -6,7 +6,7 @@ $color-3: #0d0d0d; // Cod Gray
 
 // center vertically and/or horizontally an absolute positioned element
 body{
-	font-size: 3rem;
+	font-size: 4rem;
 	box-sizing: border-box;
 }
 
@@ -16,21 +16,15 @@ body{
 	position: relative;
 	text-align: left;
 
-	span{
+	.word{
 		white-space: nowrap;
 	}
 
-	.no-js & span {
-		opacity: 0;
-		
-		&.is-visible {
-			opacity: 1;
-		}
-
-	}
 }
 @import './clip';
 @import './rotate1';
+@import './slide';
+
 // @import "./bourbon/bourbon";
 
 // @import './clip';
@@ -40,7 +34,6 @@ body{
 // @import './rotate2';
 // @import './rotate3';
 // @import './scale';
-// @import './slide';
 // @import './type';
 // @import './zoom';
 

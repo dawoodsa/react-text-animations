@@ -9,13 +9,13 @@ function Clip({ id, className, target, alternatingText, animation, children }) {
     const [currentWord, setCurrentWord] = useState(alternatingText[0]);
     const [wrapperWidth, setWrapperWidth] = useState();
     const word = useRef(null);
-    const cursorRef = useRef(null);
+    const cursor = useRef(null);
 
     useEffect(() => {
         minimizeWidth();
     }, [])
     useEffect(() => {
-        if (wrapperWidth == cursorRef.current.offsetWidth) {
+        if (wrapperWidth == cursor.current.offsetWidth) {
             setTimeout(() => {
                 updateWord();
             }, duration)
@@ -34,7 +34,7 @@ function Clip({ id, className, target, alternatingText, animation, children }) {
         setWrapperWidth(word.current.offsetWidth + 15);
     }
     const minimizeWidth = () => {
-        setWrapperWidth(cursorRef.current.offsetWidth);
+        setWrapperWidth(cursor.current.offsetWidth);
     }
     const updateWord = () => {
         const currentIndex = alternatingText.indexOf(currentWord);
@@ -59,7 +59,7 @@ function Clip({ id, className, target, alternatingText, animation, children }) {
             <span className="cd-words-wrapper" style={wrapperStyle}>
                 <span ref={word}>
                     <span className="word">{currentWord}</span>
-                    <span ref={cursorRef} className="cursor" />
+                    <span ref={cursor} className="cursor" />
                 </span>
             </span>
         </AnimationTemplate>

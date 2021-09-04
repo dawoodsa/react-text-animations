@@ -4,39 +4,44 @@ import { useState, useEffect, useRef } from 'react'
 import AnimationTemplate from '../AnimationTemplate';
 
 
-function Rotate1({ id, className, target, alternatingText, animation, style, children }) {
-
-    const [currentWord, setCurrentWord] = useState(alternatingText[0]);
-    const [currentAnimation, setCurrentAnimation] = useState('in');
-    const { delay, duration, timingFunction } = animation;
-
-
-    useEffect(() => {
-        if (currentAnimation == 'in') {
-            setTimeout(() => { setCurrentAnimation('out') }, duration)
-        } else {
-            setTimeout(() => { updateWord() }, delay)
+function Rotate1({ id, className, target, alternatingText, animation, children }) {
+    const wordStateInit = () => {
+        let initializer = ['visible'];
+        for (let i = 0; i < alternatingText.length - 1; i++) {
+            initializer.push('hidden');
         }
-    }, [currentAnimation])
-
-    useEffect(() => {
-        setCurrentAnimation('in')
-    }, [currentWord]);
-
-
-    const updateWord = () => {
-        const currentIndex = alternatingText.indexOf(currentWord);
-        if (currentIndex === alternatingText.length - 1) {
-            setCurrentWord(alternatingText[0])
-        } else {
-            setCurrentWord(alternatingText[currentIndex + 1])
-        }
+        return initializer;
     }
 
+    const [wordState, setWordState] = useState(wordStateInit());
+    const wordWrapper = useRef(null);
+    const { delay, duration, timingFunction } = animation;
+
+    useEffect(() => {
+        setTimeout(() => {
+            wordWrapper.current.style.setProperty('--duration', duration + 'ms')
+            wordWrapper.current.style.setProperty('--timingFunction', timingFunction)
+        }, delay);
+    }, [])
+
+    useEffect(() => {
+        setTimeout(() => { next() }, delay);
+    }, [wordState])
+
+    const next = () => {
+        let nextIndex;
+        const currentIndex = wordState.indexOf('visible');
+        (currentIndex == wordState.length - 1) ? nextIndex = 0 : nextIndex = currentIndex + 1;
+        const newWordState = wordState.concat().map((_, i) => nextIndex == i ? 'visible' : 'hidden')
+        setWordState(newWordState);
+
+    }
     return (
         <AnimationTemplate className={className} id={id} name="rotate-1" target={target} string={children}>
-            <span className="cd-words-wrapper">
-                <span className="word" style={{ animation: `rotate-1-${currentAnimation} ${duration / 1000}s ${timingFunction}` }}>{currentWord}</span>
+            <span className="cd-words-wrapper" ref={wordWrapper}>
+                {alternatingText.map((_, i) => {
+                    return <span className={`word ${wordState[i]}`} key={i} >{_}</span>
+                })}
             </span>
         </AnimationTemplate>
     )
@@ -51,7 +56,7 @@ Rotate1.defaultProps = {
     id: '',
     className: '',
     animation: {
-        delay: 500,
+        delay: 2000,
         duration: 1200,
         timingFunction: 'ease'
     },

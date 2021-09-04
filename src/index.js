@@ -12,10 +12,15 @@ ReactDOM.render(
 
     >Programmers are cute</TextAnimation.Clip> */}
 
-    <TextAnimation.Rotate1
+    {/* <TextAnimation.Clip
       target="cute"
-      alternatingText={["cute hadeel", "lazy love", "geniuses"]}
-    >Programmers are cute</TextAnimation.Rotate1>
+      alternatingText={["d ", "a", "d"]}
+    >Programmers are cute</TextAnimation.Clip> */}
+
+    <TextAnimation.Slide
+      target="cute"
+      alternatingText={["dete", "love", "cute"]}
+    >Programmers are cute</TextAnimation.Slide>
   </React.StrictMode>,
   document.getElementById('root')
 );
