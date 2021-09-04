@@ -81,7 +81,7 @@ Clip.propTypes = {
 
 Clip.defaultProps = {
     id: '',
-    className: '',
+    className: 'text-animation-clip',
     animation: {
         delay: 3000,
         duration: 1000,

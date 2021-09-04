@@ -54,7 +54,7 @@ Rotate1.propTypes = {
 
 Rotate1.defaultProps = {
     id: '',
-    className: '',
+    className: 'text-animation-rotate1',
     animation: {
         delay: 2000,
         duration: 1200,

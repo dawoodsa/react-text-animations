@@ -73,7 +73,7 @@ Slide.propTypes = {
 
 Slide.defaultProps = {
     id: '',
-    className: '',
+    className: 'text-animation-slide',
     animation: {
         delay: 2500,
         duration: 2000,
