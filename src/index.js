@@ -4,6 +4,7 @@ import TextAnimation from './text-animation/TextAnimation'
 import './text-animation/styles/main.scss';
 ReactDOM.render(
   <React.StrictMode>
+    
     <TextAnimation.Rotate1
       target="powerful"
       alternatingText={["Powerful", "Merciful", "Gracious"]}
@@ -20,15 +21,6 @@ ReactDOM.render(
     >Allah is the most powerful</TextAnimation.Clip>
 
 
-
-
-    {/* <TextAnimation.Clip
-      id="clip-animation-1"
-      target="cute"
-      alternatingText={["cute hadeel", "lazy love", "geniuses"]}
-      animation={{ delay: 3000, duration: 1000, timingFunction: 'ease' }}
-
-    >Programmers are cute</TextAnimation.Clip> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

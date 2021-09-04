@@ -1,4 +1,4 @@
-.rotate-1 {
+.rotate1 {
 	.words-wrapper{
 		perspective: 300px;
 		
@@ -28,7 +28,6 @@
 	}
 }
 
-
 @keyframes rotate-1-in {
 	0% {
 		transform: rotateX(180deg);
@@ -49,6 +48,7 @@
 		opacity: 1;
 	}
 }
+
 @keyframes rotate-1-out {
 	0% {
 		transform: rotateX(0deg);

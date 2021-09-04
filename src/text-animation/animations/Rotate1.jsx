@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import AnimationTemplate from '../AnimationTemplate';
 
 
-function Rotate1({ id, className, target, alternatingText, animation, children }) {
+function Rotate1({ id, cname, target, alternatingText, animation, children }) {
 
     const wordWrapper = useRef(null);
     const { delay, duration, timingFunction } = animation;
@@ -40,11 +40,12 @@ function Rotate1({ id, className, target, alternatingText, animation, children }
 
     return (
         <AnimationTemplate
-            name="rotate-1"
+            name="rotate1"
             target={target}
             sentence={children}
+
             id={id}
-            className={className}
+            cname={cname}
         >
             <span className="words-wrapper" ref={wordWrapper}>
                 {alternatingText.map((_, i) =>
@@ -62,7 +63,7 @@ Rotate1.propTypes = {
 
 Rotate1.defaultProps = {
     id: '',
-    className: 'text-animation-rotate1',
+    cname: 'text-animation-rotate1',
     animation: {
         delay: 2500,
         duration: 1000,

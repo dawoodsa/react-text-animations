@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import AnimationTemplate from '../AnimationTemplate';
 
 
-function Clip({ id, className, target, alternatingText, animation, children }) {
+function Clip({ id, cname, target, alternatingText, animation, children }) {
     const { delay, duration, timingFunction } = animation;
     const [currentWord, setCurrentWord] = useState(alternatingText[0]);
     const [wrapperWidth, setWrapperWidth] = useState();
@@ -51,8 +51,9 @@ function Clip({ id, className, target, alternatingText, animation, children }) {
             name="clip"
             target={target}
             sentence={children}
+
             id={id}
-            className={className}
+            cname={cname}
         >
             <span className="words-wrapper" style={wrapperStyle}>
                 <span ref={word}>
@@ -73,7 +74,7 @@ Clip.propTypes = {
 
 Clip.defaultProps = {
     id: '',
-    className: 'text-animation-clip',
+    cname: 'text-animation-clip',
     animation: {
         delay: 2500,
         duration: 1000,

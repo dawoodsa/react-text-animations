@@ -1,8 +1,9 @@
 import react from 'react';
-function AnimationTemplate({ className, id, name, target, sentence, children }) {
+function AnimationTemplate({ cname, id, name, target, sentence, children }) {
     const textSections = sentence.split(target);
     return (
-        <div className={className} id={id}>
+        <div className={cname} id={id}>
+
             <span>{textSections[0]}</span>
 
             <span className={name} >

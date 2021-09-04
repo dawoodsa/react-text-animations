@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect, useRef } from 'react'
 import AnimationTemplate from '../AnimationTemplate';
 
-function Slide({ id, className, target, alternatingText, animation, children }) {
+function Slide({ id, cname, target, alternatingText, animation, children }) {
 
     const wordWrapper = useRef(null);
     const { delay, duration, timingFunction } = animation;
@@ -50,15 +50,16 @@ function Slide({ id, className, target, alternatingText, animation, children }) 
 
 
     return (
-        <AnimationTemplate 
-            name="slide" 
-            target={target} 
+        <AnimationTemplate
+            name="slide"
+            target={target}
             sentence={children}
-            id={id} 
-            className={className}
+
+            id={id}
+            cname={cname}
         >
             <span className="words-wrapper" ref={wordWrapper}>
-                {alternatingText.map((_, i) => 
+                {alternatingText.map((_, i) =>
                     <span className={`word ${wordState[i]}`} key={i} >{_}</span>
                 )}
             </span>
@@ -73,7 +74,7 @@ Slide.propTypes = {
 
 Slide.defaultProps = {
     id: '',
-    className: 'text-animation-slide',
+    cname: 'text-animation-slide',
     animation: {
         delay: 2500,
         duration: 2000,
