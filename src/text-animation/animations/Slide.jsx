@@ -53,7 +53,7 @@ function Slide({ id, className, target, alternatingText, animation, children }) 
         <AnimationTemplate 
             name="slide" 
             target={target} 
-            string={children}
+            sentence={children}
             id={id} 
             className={className} 
         >

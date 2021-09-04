@@ -55,7 +55,7 @@ function Clip({ id, className, target, alternatingText, animation, children }) {
     }
 
     return (
-        <AnimationTemplate className={className} id={id} name="clip" target={target} string={children}>
+        <AnimationTemplate className={className} id={id} name="clip" target={target} sentence={children}>
             <span className="cd-words-wrapper" style={wrapperStyle}>
                 <span ref={word}>
                     <span className="word">{currentWord}</span>

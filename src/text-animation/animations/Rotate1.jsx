@@ -37,7 +37,7 @@ function Rotate1({ id, className, target, alternatingText, animation, children }
 
     }
     return (
-        <AnimationTemplate className={className} id={id} name="rotate-1" target={target} string={children}>
+        <AnimationTemplate className={className} id={id} name="rotate-1" target={target} sentence={children}>
             <span className="cd-words-wrapper" ref={wordWrapper}>
                 {alternatingText.map((_, i) => {
                     return <span className={`word ${wordState[i]}`} key={i} >{_}</span>
