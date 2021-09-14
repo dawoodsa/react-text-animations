@@ -1,0 +1,49 @@
+.zoom {
+    --duration:0;
+    --timingFunction:ease;
+
+	.words-wrapper {
+		perspective: 300px;
+        vertical-align: top;
+        .word {
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            opacity: 0;
+        }
+
+        .visible {
+            position: relative;
+            opacity: 1;
+            animation: zoom-in var(--duration) var(--timingFunction);
+        }
+
+        .hidden {
+            animation: zoom-out var(--duration) var(--timingFunction);
+        }
+	}
+}
+
+@keyframes zoom-in {
+	from {
+		opacity: 0;
+		transform: translateZ(100px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateZ(0)
+	}
+}
+
+@keyframes zoom-out{
+	from {
+		opacity: 1;
+        transform: translateZ(0)
+
+	}
+	to {
+		opacity: 0;
+        transform: translateZ(100px);
+    }
+}

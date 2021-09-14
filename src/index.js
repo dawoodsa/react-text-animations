@@ -4,7 +4,10 @@ import TextAnimation from './text-animation/TextAnimation'
 import './text-animation/styles/main.scss';
 ReactDOM.render(
   <React.StrictMode>
-    
+    {/* <TextAnimation.Clip
+      target="powerful"
+      alternatingText={["Powerful", "Merciful", "Gracious"]}
+    >Allah is the most powerful</TextAnimation.Clip> */}
     <TextAnimation.Rotate1
       target="powerful"
       alternatingText={["Powerful", "Merciful", "Gracious"]}
@@ -15,10 +18,11 @@ ReactDOM.render(
       alternatingText={["Powerful", "Merciful", "Gracious"]}
     >Allah is the most powerful</TextAnimation.Slide>
 
-    <TextAnimation.Clip
+
+    <TextAnimation.Zoom
       target="powerful"
       alternatingText={["Powerful", "Merciful", "Gracious"]}
-    >Allah is the most powerful</TextAnimation.Clip>
+    >Allah is the most powerful</TextAnimation.Zoom>
 
 
   </React.StrictMode>,
