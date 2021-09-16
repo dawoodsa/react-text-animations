@@ -4,16 +4,8 @@
 
 	.words-wrapper {
 		perspective: 300px;
-        vertical-align: top;
-        .word {
-            display: inline-block;
-            position: absolute;
-            left: 0;
-            opacity: 0;
-        }
 
         .visible {
-            position: relative;
             opacity: 1;
             animation: zoom-in var(--duration) var(--timingFunction);
         }

@@ -4,17 +4,8 @@
 
 	.words-wrapper {
 		overflow: hidden;
-		vertical-align: top;
-
-        .word {
-            display: inline-block;
-            position: absolute;
-            left: 0;
-            opacity: 0;
-        }
 
         .visible {
-            position: relative;
             opacity: 1;
             animation: slide-in var(--duration) var(--timingFunction);
         }

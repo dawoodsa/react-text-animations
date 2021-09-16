@@ -1,9 +1,9 @@
 /* eslint-disable */
 import PropTypes from 'prop-types';
-import CssAnimation from '../CssAnimation';
+import WordAnimation from '../WordAnimation';
 function Slide(props) {
     props = Object.assign({name:'slide'}, props);
-    return <CssAnimation {...props} />
+    return <WordAnimation {...props} />
 }
 
 Slide.propTypes = {

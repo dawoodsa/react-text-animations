@@ -1,0 +1,50 @@
+.scale {
+    .word{
+        opacity: 1;
+    }
+	i {
+		display: inline-block;
+		opacity: 0;
+		 transform: scale(0);
+
+		&.visible{
+			opacity: 1;
+		}
+
+		&.in {
+			 animation: scale-up .6s forwards;
+		}
+
+		&.out {
+			 animation: scale-down .6s forwards;
+		}
+	}
+}
+ @keyframes scale-up  {
+	0% {
+		 transform: scale(0);
+		opacity: 0;
+	}
+
+	60% {
+		 transform: scale(1.2);
+		opacity: 1;
+	}
+
+	100% {
+		 transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes scale-down  {
+	0% {
+		 transform: scale(1);
+		opacity: 1;
+	}
+
+	60% {
+		 transform: scale(0);
+		opacity: 0;
+	}
+}

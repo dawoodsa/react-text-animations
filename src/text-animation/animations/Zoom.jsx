@@ -1,10 +1,10 @@
 /* eslint-disable */
 import PropTypes from 'prop-types';
-import CssAnimation from '../CssAnimation';
+import WordAnimation from '../WordAnimation';
 
 function Zoom(props) {
     props = Object.assign({ name: 'zoom' }, props);
-    return <CssAnimation {...props} />
+    return <WordAnimation {...props} />
 }
 
 Zoom.propTypes = {

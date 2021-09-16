@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react'
 import AnimationTemplate from './AnimationTemplate';
 
-function CssAnimation({ name, id, cname, target, alternatingText, animation, children }) {
+function WordAnimation({ name, id, cname, target, alternatingText, animation, children }) {
     const wordWrapper = useRef(null);
     const { delay, duration, timingFunction } = animation;
     const InitWordState = (index) => {
@@ -53,4 +53,4 @@ function CssAnimation({ name, id, cname, target, alternatingText, animation, chi
     )
 }
 
-export default CssAnimation;
+export default WordAnimation;

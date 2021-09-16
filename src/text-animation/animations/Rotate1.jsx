@@ -1,10 +1,10 @@
 /* eslint-disable */
 import PropTypes from 'prop-types';
-import CssAnimation from '../CssAnimation';
+import WordAnimation from '../WordAnimation';
 
 function Rotate1(props) {
     props = Object.assign({name:'rotate1'}, props);
-    return <CssAnimation {...props} />
+    return <WordAnimation {...props} />
 }
 
 Rotate1.propTypes = {
