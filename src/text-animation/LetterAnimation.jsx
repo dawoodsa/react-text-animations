@@ -17,8 +17,10 @@ function LetterAnimation({ name, id, cname, target, alternatingText, animation, 
     }
     const [letterState, setLetterState] = useState(initLetterState());
     const [wordIndex, setWordIndex] = useState(0);
+    const [opacity, setOpacity] = useState(0);
 
     const setAnimationProperties = () => {
+        setOpacity(1)
         wordWrapper.current.style.setProperty('--duration', duration + 'ms')
         wordWrapper.current.style.setProperty('--timingFunction', timingFunction)
     }
@@ -63,10 +65,11 @@ function LetterAnimation({ name, id, cname, target, alternatingText, animation, 
             target={target}
             sentence={children}
         >
-            <span className="words-wrapper" ref={wordWrapper}>
+            <span className="words-wrapper letter-ani" ref={wordWrapper}>
                 {alternatingText.map((word, i) => {
+                    const visible = (i == 0) ? 'visible' : '';
                     return (
-                        <span className={`word word-${i}`}>
+                        <span className={`word word-${i} ${visible}`} style={{ opacity: opacity }}>
                             {word.split('').map((letter, letterIndex) => {
                                 return (
                                     <i className={letterState[i][letterIndex]}>

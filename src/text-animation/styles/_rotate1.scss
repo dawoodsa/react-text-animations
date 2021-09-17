@@ -8,7 +8,6 @@
 			transform-origin: 50% 100% ;
 		}
 		.visible{
-			opacity: 1;
 			animation: rotate-1-in var(--duration) var(--timingFunction);
 		}
 		.hidden{

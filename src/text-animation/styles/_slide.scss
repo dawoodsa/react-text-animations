@@ -6,7 +6,6 @@
 		overflow: hidden;
 
         .visible {
-            opacity: 1;
             animation: slide-in var(--duration) var(--timingFunction);
         }
     

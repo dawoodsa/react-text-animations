@@ -6,7 +6,6 @@
 		perspective: 300px;
 
         .visible {
-            opacity: 1;
             animation: zoom-in var(--duration) var(--timingFunction);
         }
 

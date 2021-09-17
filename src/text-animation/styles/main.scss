@@ -12,25 +12,41 @@ body{
 
 
 .words-wrapper {
+
 	display: inline-block;
 	position: relative;
 	text-align: left;
 	white-space: nowrap;
 	vertical-align: top;
+
 	.word{
 		display: inline-block;
 		position: absolute;
 		top:0;
 		left: 0;
-		opacity: 0;
-	}
-	em{
-		font-style: normal;
 	}
 	.visible{
 		position: relative;
+		opacity: 1 !important;
+	}
+
+	i,em{
+		font-style: normal;
+		display: inline-block;
+	}
+	i{
+		backface-visibility:hidden;
 	}
 }
+
+.word-ani{
+	.word{
+		opacity: 0;
+	}
+}
+
+
+
 @import './clip';
 @import './rotate1';
 @import './rotate2';

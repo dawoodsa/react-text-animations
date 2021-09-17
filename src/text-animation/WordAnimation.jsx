@@ -44,7 +44,7 @@ function WordAnimation({ name, id, cname, target, alternatingText, animation, ch
             id={id}
             cname={cname}
         >
-            <span className="words-wrapper" ref={wordWrapper}>
+            <span className="words-wrapper word-ani" ref={wordWrapper}>
                 {alternatingText.map((_, i) =>
                     <span className={`word ${wordState[i]}`} key={i}>{_}</span>
                 )}

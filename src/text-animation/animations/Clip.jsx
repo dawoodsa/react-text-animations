@@ -57,8 +57,8 @@ function Clip({ id, cname, target, alternatingText, animation, children }) {
         >
             <span className="words-wrapper" style={wrapperStyle}>
                 <span ref={word}>
-                    <span className="word">{currentWord}</span>
-                    <span className="cursor" ref={cursor}/>
+                    <span className="word visible">{currentWord}</span>
+                    <span className="cursor" ref={cursor} />
                 </span>
             </span>
         </AnimationTemplate>

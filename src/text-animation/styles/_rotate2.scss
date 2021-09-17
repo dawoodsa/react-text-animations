@@ -1,21 +1,14 @@
 .rotate2 {
-    --duration:1s;
+    --duration:0s;
 	--timingFunction:forwards;
+
 	.words-wrapper {
 		perspective: 300px;
-	}
-    .word{
-		opacity: 1;
-	}
-	i, em {
-		display: inline-block;
-		backface-visibility: hidden;
 	}
 
 	i {
 		transform-style: preserve-3d;
-        transform: translateZ(-20px) rotateX(90deg);
-
+        transform: translateZ(-20px) rotateX(-90deg);
 		&.in {
             animation : rotate-2-in var(--duration) var(--timingFunction);
         }
@@ -25,10 +18,6 @@
         }
 	}
 
-    
-	em {
-		transform : translateZ(20px);
-	}
 }
 
 @keyframes rotate-2-in {

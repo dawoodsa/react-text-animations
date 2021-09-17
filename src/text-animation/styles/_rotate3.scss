@@ -1,23 +1,13 @@
 .rotate3 {
-    --duration:.6s;
+    --duration:0s;
 	--timingFunction:forwards;
 
 	.words-wrapper {
 		perspective: 300px;
-		.word{
-			opacity: 1;
-		}
 	}
 
-	
 	i {
-		display: inline-block;
 		transform:rotateY(180deg);
-		backface-visibility:hidden;
-
-		&.visible{
-			transform:rotateY(0deg);
-		}
 
 		&.in {
 			animation: rotate-3-in var(--duration) var(--timingFunction);

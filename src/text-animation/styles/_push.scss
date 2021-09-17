@@ -3,7 +3,6 @@
 	--timingFunction:ease;
 
 		.visible{
-			opacity: 1;
 			animation: push-in var(--duration) var(--timingFunction);
 		}
 		.hidden{
