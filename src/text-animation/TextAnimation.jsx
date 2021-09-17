@@ -1,4 +1,3 @@
-import react from 'react';
 import Clip from './animations/Clip';
 import Rotate1 from './animations/Rotate1';
 import Slide from './animations/Slide';
