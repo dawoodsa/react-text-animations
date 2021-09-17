@@ -1,34 +1,28 @@
 /* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react'
 import AnimationTemplate from './AnimationTemplate';
-import styled from 'styled-components';
+import WordWrapper from './WordsWrapper';
 
-const wordWrapper = styled.span`
-    
-`
+
+
 function LetterAnimation({ name, id, cname, target, alternatingText, animation, children }) {
-    const { delay, duration, timingFunction } = animation;
-    const letterDelay = duration / alternatingText.length;
-    const wordWrapper = useRef(null);
-    const initLetterState = () => {
-        return alternatingText.map((_, i) => {
-            return _.split('').map((_) => (i == 0) ? 'in' : 'out');
-        })
-    }
-    const [letterState, setLetterState] = useState(initLetterState());
+    const delay = animation.delay
+    const letterDelay = animation.duration / alternatingText.length;
+
+
     const [wordIndex, setWordIndex] = useState(0);
     const [opacity, setOpacity] = useState(0);
+    const [letterState, setLetterState] = useState(() =>
+        alternatingText.map((word, i) =>
+            word.split('').map(() => (i == 0) ? 'in' : 'out')
+        )
+    );
 
-    const setAnimationProperties = () => {
-        setOpacity(1)
-        wordWrapper.current.style.setProperty('--duration', duration + 'ms')
-        wordWrapper.current.style.setProperty('--timingFunction', timingFunction)
-    }
+
+
     useEffect(() => {
-        setTimeout(setAnimationProperties, delay);
-    }, [])
-    useEffect(() => {
-        setTimeout(playNext, delay);
+        setTimeout(setOpacity(1), delay);
+        setTimeout(play, delay);
         setTimeout(incrementIndex, delay);
     }, [wordIndex])
 
@@ -53,7 +47,7 @@ function LetterAnimation({ name, id, cname, target, alternatingText, animation, 
     const incrementIndex = () => {
         setWordIndex(nextIndex());
     }
-    const playNext = () => {
+    const play = () => {
         animateWord('out', wordIndex);
         animateWord('in', nextIndex());
     }
@@ -65,22 +59,28 @@ function LetterAnimation({ name, id, cname, target, alternatingText, animation, 
             target={target}
             sentence={children}
         >
-            <span className="words-wrapper letter-ani" ref={wordWrapper}>
-                {alternatingText.map((word, i) => {
-                    const visible = (i == 0) ? 'visible' : '';
-                    return (
-                        <span className={`word word-${i} ${visible}`} style={{ opacity: opacity }}>
-                            {word.split('').map((letter, letterIndex) => {
-                                return (
-                                    <i className={letterState[i][letterIndex]}>
-                                        <em>{letter}</em>
-                                    </i>
-                                )
-                            })}
-                        </span>
-                    )
-                })}
-            </span>
+            <WordWrapper animationProps={animation} type="letter-ani">
+                {alternatingText.map((word, wordIndex) =>
+
+                    <span 
+                        style={{ opacity: opacity }} 
+                        className="word" 
+                        key={wordIndex}
+                    >
+                        {word.split('').map((letter, letterIndex) =>
+
+                            <i 
+                                className={letterState[wordIndex][letterIndex]} 
+                                key={letterIndex}
+                            >
+                                <em>{letter}</em>
+                            </i>
+
+                        )}
+                    </span>
+
+                )}
+            </WordWrapper>
         </AnimationTemplate>
     )
 }

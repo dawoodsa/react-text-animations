@@ -1,31 +1,15 @@
 /* eslint-disable */
 import { useState, useEffect, useRef } from 'react'
 import AnimationTemplate from './AnimationTemplate';
-
+import WordWrapper from './WordsWrapper';
 function WordAnimation({ name, id, cname, target, alternatingText, animation, children }) {
-    const wordWrapper = useRef(null);
-    const { delay, duration, timingFunction } = animation;
-    const InitWordState = (index) => {
-        return alternatingText.map((_, i) => (i == index) ? 'visible' : 'hidden')
-    }
-
+    const InitWordState = (index) => alternatingText.map((_, i) => (i == index) ? 'visible' : 'hidden')
     const [wordState, setWordState] = useState(InitWordState(0));
 
-
     useEffect(() => {
-        setTimeout(setAnimationProperties, delay);
-    }, [])
-
-
-    useEffect(() => {
-        setTimeout(playNext, delay);
+        setTimeout(playNext, animation.delay);
     }, [wordState])
 
-
-    const setAnimationProperties = () => {
-        wordWrapper.current.style.setProperty('--duration', duration + 'ms')
-        wordWrapper.current.style.setProperty('--timingFunction', timingFunction)
-    }
     const lastIndex = (i) => (i == wordState.length - 1) ? true : false;
 
     const getNextIndex = (i) => (lastIndex(i)) ? 0 : i + 1;
@@ -44,11 +28,14 @@ function WordAnimation({ name, id, cname, target, alternatingText, animation, ch
             id={id}
             cname={cname}
         >
-            <span className="words-wrapper word-ani" ref={wordWrapper}>
-                {alternatingText.map((_, i) =>
-                    <span className={`word ${wordState[i]}`} key={i}>{_}</span>
+            <WordWrapper animationProps={animation} type="word-ani">
+                {alternatingText.map((word, i) =>
+                    <span 
+                        className={`word ${wordState[i]}`} 
+                        key={i}
+                    >{word}</span>
                 )}
-            </span>
+            </WordWrapper>
         </AnimationTemplate>
     )
 }

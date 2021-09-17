@@ -24,23 +24,26 @@ body{
 		position: absolute;
 		top:0;
 		left: 0;
+
+		i,em{
+			font-style: normal;
+			display: inline-block;
+		}
+		i{
+			backface-visibility:hidden;
+		}
 	}
+
 	.visible{
 		position: relative;
 		opacity: 1 !important;
 	}
 
-	i,em{
-		font-style: normal;
-		display: inline-block;
-	}
-	i{
-		backface-visibility:hidden;
-	}
+	
 }
 
 .word-ani{
-	.word{
+	span{
 		opacity: 0;
 	}
 }

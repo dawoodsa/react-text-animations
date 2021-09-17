@@ -4,9 +4,10 @@
 	.words-wrapper{
 		perspective: 300px;
 
-		.word {
+		span {
 			transform-origin: 50% 100% ;
 		}
+		
 		.visible{
 			animation: rotate-1-in var(--duration) var(--timingFunction);
 		}
