@@ -1,4 +1,4 @@
-function AnimationTemplate({ cname, id, name, target, sentence, children }) {
+function BoilerPlate({ cname, id, name, target, sentence, children }) {
     const section = sentence.split(target);
     return (
         <div className={cname} id={id}>
@@ -13,4 +13,4 @@ function AnimationTemplate({ cname, id, name, target, sentence, children }) {
         </div>
     )
 }
-export default AnimationTemplate
+export default BoilerPlate

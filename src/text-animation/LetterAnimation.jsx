@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react'
-import AnimationTemplate from './AnimationTemplate';
-import WordWrapper from './WordsWrapper';
+import BoilerPlate from './BoilerPlate';
+import SetAnimationProperties from './SetAnimationProperties';
 
 
 
@@ -52,14 +52,14 @@ function LetterAnimation({ name, id, cname, target, alternatingText, animation, 
         animateWord('in', nextIndex());
     }
     return (
-        <AnimationTemplate
+        <BoilerPlate
             name={name}
             id={id}
             cname={cname}
             target={target}
             sentence={children}
         >
-            <WordWrapper animationProps={animation} type="letter-ani">
+            <SetAnimationProperties animationProps={animation} type="letter-ani">
                 {alternatingText.map((word, wordIndex) =>
 
                     <span 
@@ -80,8 +80,8 @@ function LetterAnimation({ name, id, cname, target, alternatingText, animation, 
                     </span>
 
                 )}
-            </WordWrapper>
-        </AnimationTemplate>
+            </SetAnimationProperties>
+        </BoilerPlate>
     )
 }
 

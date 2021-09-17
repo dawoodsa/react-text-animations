@@ -1,7 +1,7 @@
 /* eslint-disable */
 import PropTypes from 'prop-types';
 import { useState, useEffect, useRef } from 'react'
-import AnimationTemplate from '../AnimationTemplate';
+import BoilerPlate from '../BoilerPlate';
 
 
 function Clip({ id, cname, target, alternatingText, animation, children }) {
@@ -47,7 +47,7 @@ function Clip({ id, cname, target, alternatingText, animation, children }) {
     }
 
     return (
-        <AnimationTemplate
+        <BoilerPlate
             name="clip"
             target={target}
             sentence={children}
@@ -61,7 +61,7 @@ function Clip({ id, cname, target, alternatingText, animation, children }) {
                     <span className="cursor" ref={cursor} />
                 </span>
             </span>
-        </AnimationTemplate>
+        </BoilerPlate>
     )
 
 

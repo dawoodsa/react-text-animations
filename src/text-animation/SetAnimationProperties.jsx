@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React,{ useEffect,useRef } from 'react'
 
-function WordWrapper({animationProps,type,children}) {
+function SetAnimationProperties({animationProps,type,children}) {
     
     const { delay, duration, timingFunction } = animationProps;
     const wordWrapper = useRef(null);
@@ -19,4 +19,4 @@ function WordWrapper({animationProps,type,children}) {
         </span>
     )
 }
-export default WordWrapper
+export default SetAnimationProperties

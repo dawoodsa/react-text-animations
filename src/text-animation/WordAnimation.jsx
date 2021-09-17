@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { useState, useEffect, useRef } from 'react'
-import AnimationTemplate from './AnimationTemplate';
-import WordWrapper from './WordsWrapper';
+import BoilerPlate from './BoilerPlate';
+import SetAnimationProperties from './SetAnimationProperties';
 function WordAnimation({ name, id, cname, target, alternatingText, animation, children }) {
     const InitWordState = (index) => alternatingText.map((_, i) => (i == index) ? 'visible' : 'hidden')
     const [wordState, setWordState] = useState(InitWordState(0));
@@ -20,7 +20,7 @@ function WordAnimation({ name, id, cname, target, alternatingText, animation, ch
     }
 
     return (
-        <AnimationTemplate
+        <BoilerPlate
             name={name}
             target={target}
             sentence={children}
@@ -28,15 +28,15 @@ function WordAnimation({ name, id, cname, target, alternatingText, animation, ch
             id={id}
             cname={cname}
         >
-            <WordWrapper animationProps={animation} type="word-ani">
+            <SetAnimationProperties animationProps={animation} type="word-ani">
                 {alternatingText.map((word, i) =>
-                    <span 
-                        className={`word ${wordState[i]}`} 
+                    <span
+                        className={`word ${wordState[i]}`}
                         key={i}
                     >{word}</span>
                 )}
-            </WordWrapper>
-        </AnimationTemplate>
+            </SetAnimationProperties>
+        </BoilerPlate>
     )
 }
 
