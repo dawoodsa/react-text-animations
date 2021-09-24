@@ -1,7 +1,7 @@
 /* eslint-disable */
 import PropTypes from 'prop-types';
-import { useState, useEffect, useRef } from 'react'
-import BoilerPlate from '../BoilerPlate';
+import  React,{ useState, useEffect, useRef } from 'react'
+import BoilerPlate from '../templates/BoilerPlate';
 
 
 function Clip({ id, cname, target, alternatingText, animation, children }) {

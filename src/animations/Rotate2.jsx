@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import LetterAnimation from '../LetterAnimation';
+import LetterAnimation from '../templates/LetterAnimation';
 function Rotate2(props) {
     props = Object.assign({ name: 'rotate2' }, props);
     return <LetterAnimation {...props}></LetterAnimation>

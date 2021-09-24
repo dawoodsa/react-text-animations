@@ -1,7 +1,7 @@
 /* eslint-disable */
-import { useState, useEffect, useRef } from 'react'
+import React,{ useState, useEffect } from 'react'
 import BoilerPlate from './BoilerPlate';
-import SetAnimationProperties from './SetAnimationProperties';
+import SetAnimationProperties from '../ui-components/SetAnimationProperties';
 function WordAnimation({ name, id, cname, target, alternatingText, animation, children }) {
     const InitWordState = (index) => alternatingText.map((_, i) => (i == index) ? 'visible' : 'hidden')
     const [wordState, setWordState] = useState(InitWordState(0));

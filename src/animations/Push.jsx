@@ -1,23 +1,25 @@
 /* eslint-disable */
+import React from 'react';
 import PropTypes from 'prop-types';
-import WordAnimation from '../WordAnimation';
-function Slide(props) {
-    props = Object.assign({name:'slide'}, props);
+import WordAnimation from '../templates/WordAnimation';
+
+function Push(props) {
+    props = Object.assign({ name: 'push' }, props);
     return <WordAnimation {...props} />
 }
 
-Slide.propTypes = {
+Push.propTypes = {
     target: PropTypes.string.isRequired,
     alternatingText: PropTypes.array.isRequired,
 }
 
-Slide.defaultProps = {
+Push.defaultProps = {
     id: '',
-    cname: 'text-animation-slide',
+    cname: 'text-animation-Push',
     animation: {
         delay: 2500,
-        duration: 2000,
+        duration: 600,
         timingFunction: 'ease'
     },
 }
-export default Slide;
+export default Push;

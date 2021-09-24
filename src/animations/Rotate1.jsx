@@ -1,9 +1,10 @@
 /* eslint-disable */
+import React from 'react';
 import PropTypes from 'prop-types';
-import WordAnimation from '../WordAnimation';
+import WordAnimation from '../templates/WordAnimation';
 
 function Rotate1(props) {
-    props = Object.assign({name:'rotate1'}, props);
+    props = Object.assign({ name: 'rotate1' }, props);
     return <WordAnimation {...props} />
 }
 

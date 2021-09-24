@@ -1,41 +1,41 @@
 {
   "name": "react-text-animation",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "node-sass": "^6.0.1",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "styled-components": "^5.3.1",
-    "web-vitals": "^1.1.2"
+  "version": "1.0.0",
+  "description": "A Simple and Flexible Way to add Eye catching Text Animations",
+  "main": "./dist/bundle.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dawoodsa/react-text-animation.git"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "develop": "rollup -c rollup.config.js -w"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "keywords": [
+    "react",
+    "text",
+    "animations",
+    "transitions"
+  ],
+  "author": "Dawood Alhamdan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dawoodsa/react-text-animation/issues"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "homepage": "https://github.com/dawoodsa/react-text-animation#readme",
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
+    "@rollup/plugin-replace": "^3.0.0",
+    "rollup": "^2.57.0",
+    "rollup-plugin-styles": "^3.14.1",
+    "node-sass": "^6.0.1"
   }
 }

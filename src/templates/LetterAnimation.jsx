@@ -1,7 +1,7 @@
 /* eslint-disable */
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect} from 'react'
 import BoilerPlate from './BoilerPlate';
-import SetAnimationProperties from './SetAnimationProperties';
+import SetAnimationProperties from '../ui-components/SetAnimationProperties';
 
 
 

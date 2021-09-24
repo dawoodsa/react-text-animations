@@ -1,3 +1,5 @@
+import React from 'react';
+
 function BoilerPlate({ cname, id, name, target, sentence, children }) {
     const section = sentence.split(target);
     return (
