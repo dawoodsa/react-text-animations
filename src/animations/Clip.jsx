@@ -4,9 +4,9 @@ import  React,{ useState, useEffect, useRef } from 'react'
 import BoilerPlate from '../templates/BoilerPlate';
 
 
-function Clip({ id, cname, target, alternatingText, animation, children }) {
+function Clip({ id, cname, target, text, animation, children }) {
     const { delay, duration, timingFunction } = animation;
-    const [currentWord, setCurrentWord] = useState(alternatingText[0]);
+    const [currentWord, setCurrentWord] = useState(text[0]);
     const [wrapperWidth, setWrapperWidth] = useState();
     const word = useRef(null);
     const cursor = useRef(null);
@@ -31,13 +31,13 @@ function Clip({ id, cname, target, alternatingText, animation, children }) {
     const minimizeWidth = () => {
         setWrapperWidth(cursor.current.offsetWidth);
     }
-    const isLastWord = (i) => (i == alternatingText.length - 1) ? true : false;
+    const isLastWord = (i) => (i == text.length - 1) ? true : false;
     const updateWord = () => {
-        const curIndex = alternatingText.indexOf(currentWord);
+        const curIndex = text.indexOf(currentWord);
         if (isLastWord(curIndex)) {
-            setCurrentWord(alternatingText[0])
+            setCurrentWord(text[0])
         } else {
-            setCurrentWord(alternatingText[curIndex + 1])
+            setCurrentWord(text[curIndex + 1])
         }
     }
 
@@ -69,7 +69,7 @@ function Clip({ id, cname, target, alternatingText, animation, children }) {
 
 Clip.propTypes = {
     target: PropTypes.string.isRequired,
-    alternatingText: PropTypes.array.isRequired,
+    text: PropTypes.array.isRequired,
 }
 
 Clip.defaultProps = {

@@ -5,15 +5,15 @@ import SetAnimationProperties from '../ui-components/SetAnimationProperties';
 
 
 
-function LetterAnimation({ name, id, cname, target, alternatingText, animation, children }) {
+function LetterAnimation({ name, id, cname, target, text, animation, children }) {
     const delay = animation.delay
-    const letterDelay = animation.duration / alternatingText.length;
+    const letterDelay = animation.duration / text.length;
 
 
     const [wordIndex, setWordIndex] = useState(0);
     const [opacity, setOpacity] = useState(0);
     const [letterState, setLetterState] = useState(() =>
-        alternatingText.map((word, i) =>
+        text.map((word, i) =>
             word.split('').map(() => (i == 0) ? 'in' : 'out')
         )
     );
@@ -60,7 +60,7 @@ function LetterAnimation({ name, id, cname, target, alternatingText, animation, 
             sentence={children}
         >
             <SetAnimationProperties animationProps={animation} type="letter-ani">
-                {alternatingText.map((word, wordIndex) =>
+                {text.map((word, wordIndex) =>
 
                     <span 
                         style={{ opacity: opacity }} 

@@ -2,8 +2,8 @@
 import React,{ useState, useEffect } from 'react'
 import BoilerPlate from './BoilerPlate';
 import SetAnimationProperties from '../ui-components/SetAnimationProperties';
-function WordAnimation({ name, id, cname, target, alternatingText, animation, children }) {
-    const InitWordState = (index) => alternatingText.map((_, i) => (i == index) ? 'visible' : 'hidden')
+function WordAnimation({ name, id, cname, target, text, animation, children }) {
+    const InitWordState = (index) => text.map((_, i) => (i == index) ? 'visible' : 'hidden')
     const [wordState, setWordState] = useState(InitWordState(0));
 
     useEffect(() => {
@@ -29,7 +29,7 @@ function WordAnimation({ name, id, cname, target, alternatingText, animation, ch
             cname={cname}
         >
             <SetAnimationProperties animationProps={animation} type="word-ani">
-                {alternatingText.map((word, i) =>
+                {text.map((word, i) =>
                     <span
                         className={`word ${wordState[i]}`}
                         key={i}
