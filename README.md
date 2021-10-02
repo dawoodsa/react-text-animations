@@ -2,7 +2,7 @@
 A variety of text animations ready to be applied.
 
 
-![alt-text](https://github.com/dawoodsa/react-text-animations/blob/master/example.gif)
+![](https://github.com/dawoodsa/react-text-animations/blob/master/example.gif)
 
 ## Installation
 `npm i react-text-animations`
