@@ -10,14 +10,14 @@ function Flip(props) {
 
 Flip.propTypes = {
     target: PropTypes.string.isRequired,
-    alternatingText: PropTypes.array.isRequired,
+    text: PropTypes.array.isRequired,
 }
 
 Flip.defaultProps = {
     id: '',
     cname: 'text-animation-Flip',
     animation: {
-        delay: 2500,
+        delay: 1000,
         duration: 1000,
         timingFunction: 'ease'
     },

@@ -2,10 +2,10 @@
 	--duration: 0;
 	--timingFunction:ease;
 
-		.visible{
+		.show{
 			animation: push-in var(--duration) var(--timingFunction);
 		}
-		.hidden{
+		.hide{
 			animation: push-out var(--duration) var(--timingFunction);
 		}
 }

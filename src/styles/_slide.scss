@@ -5,11 +5,11 @@
 	.words-wrapper {
 		overflow: hidden;
 
-        .visible {
+        .show {
             animation: slide-in var(--duration) var(--timingFunction);
         }
     
-        .hidden {
+        .hide {
             animation: slide-out var(--duration) var(--timingFunction);
         }
 	}

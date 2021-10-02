@@ -1,13 +1,19 @@
 /* eslint-disable */
-import React,{ useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import BoilerPlate from './BoilerPlate';
 import SetAnimationProperties from '../ui-components/SetAnimationProperties';
 function WordAnimation({ name, id, cname, target, text, animation, children }) {
-    const InitWordState = (index) => text.map((_, i) => (i == index) ? 'visible' : 'hidden')
-    const [wordState, setWordState] = useState(InitWordState(0));
+    const { delay, duration } = animation;
+    const   showClass = 'show',
+            hideClass = 'hide',
+            sizeClass = 'visible';
+    const InitState = (index, showClass, hideClass) => text.map((_, i) => (i == index) ? showClass : hideClass)
+    const [wordState, setWordState] = useState(InitState(0, showClass, hideClass));
+    const [sizeState, setSizeState] = useState(InitState(0, sizeClass, ''))
 
     useEffect(() => {
-        setTimeout(playNext, animation.delay);
+        let start = setTimeout(playNext, delay);
+        return () => clearTimeout(start);
     }, [wordState])
 
     const lastIndex = (i) => (i == wordState.length - 1) ? true : false;
@@ -15,8 +21,20 @@ function WordAnimation({ name, id, cname, target, text, animation, children }) {
     const getNextIndex = (i) => (lastIndex(i)) ? 0 : i + 1;
 
     const playNext = () => {
-        const nextIndex = getNextIndex(wordState.indexOf('visible'));
-        setWordState(InitWordState(nextIndex));
+        const currentIndex = wordState.indexOf(showClass);
+        const nextIndex = getNextIndex(currentIndex);
+
+        const AnimationsThatNeedADelay = ['flip'];
+
+        if (AnimationsThatNeedADelay.includes(name)) {
+            setTimeout(() => {
+                setSizeState(InitState(nextIndex, 'visible', ''))
+            }, duration / 2)
+        } else {
+            setSizeState(InitState(nextIndex, 'visible', ''))
+        }
+
+        setWordState(InitState(nextIndex, showClass, hideClass));
     }
 
     return (
@@ -31,7 +49,7 @@ function WordAnimation({ name, id, cname, target, text, animation, children }) {
             <SetAnimationProperties animationProps={animation} type="word-ani">
                 {text.map((word, i) =>
                     <span
-                        className={`word ${wordState[i]}`}
+                        className={`word ${wordState[i]} ${sizeState[i]}`}
                         key={i}
                     >{word}</span>
                 )}

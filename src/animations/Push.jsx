@@ -10,15 +10,15 @@ function Push(props) {
 
 Push.propTypes = {
     target: PropTypes.string.isRequired,
-    alternatingText: PropTypes.array.isRequired,
+    text: PropTypes.array.isRequired,
 }
 
 Push.defaultProps = {
     id: '',
     cname: 'text-animation-Push',
     animation: {
-        delay: 2500,
-        duration: 600,
+        delay: 1000,
+        duration: 1000,
         timingFunction: 'ease'
     },
 }

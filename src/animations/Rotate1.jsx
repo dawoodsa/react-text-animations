@@ -7,7 +7,7 @@ function Rotate1(props) {
 }
 Rotate1.propTypes = {
     target: PropTypes.string.isRequired,
-    alternatingText: PropTypes.array.isRequired,
+    text: PropTypes.array.isRequired,
 }
 
 Rotate1.defaultProps = {
@@ -15,7 +15,7 @@ Rotate1.defaultProps = {
     cname: 'text-animation-Rotate1',
     animation: {
         delay: 2000,
-        duration: 400,
+        duration: 1000,
         timingFunction: 'forwards'
     },
 }

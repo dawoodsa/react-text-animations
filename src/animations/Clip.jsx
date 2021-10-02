@@ -1,6 +1,6 @@
 /* eslint-disable */
 import PropTypes from 'prop-types';
-import  React,{ useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import BoilerPlate from '../templates/BoilerPlate';
 
 
@@ -12,11 +12,13 @@ function Clip({ id, cname, target, text, animation, children }) {
     const cursor = useRef(null);
 
     useEffect(() => {
+        let x;
         if (isClipped()) {
             setTimeout(updateWord, duration)
         } else {
-            setTimeout(minimizeWidth, delay)
+            x = setTimeout(minimizeWidth, delay)
         }
+        return () => clearTimeout(x);
     }, [wrapperWidth])
 
     useEffect(() => {
@@ -76,8 +78,8 @@ Clip.defaultProps = {
     id: '',
     cname: 'text-animation-clip',
     animation: {
-        delay: 2500,
-        duration: 1000,
+        delay: 1000,
+        duration: 500,
         timingFunction: 'ease'
     },
 }
