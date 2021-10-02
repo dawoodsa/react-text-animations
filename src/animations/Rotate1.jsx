@@ -1,25 +1,22 @@
-/* eslint-disable */
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types';
-import WordAnimation from '../templates/WordAnimation';
-
+import LetterAnimation from '../templates/LetterAnimation';
 function Rotate1(props) {
     props = Object.assign({ name: 'rotate1' }, props);
-    return <WordAnimation {...props} />
+    return <LetterAnimation {...props}></LetterAnimation>
 }
-
 Rotate1.propTypes = {
     target: PropTypes.string.isRequired,
-    alternatingText: PropTypes.array.isRequired,
+    text: PropTypes.array.isRequired,
 }
 
 Rotate1.defaultProps = {
     id: '',
-    cname: 'text-animation-rotate1',
+    cname: 'text-animation-Rotate1',
     animation: {
-        delay: 2500,
-        duration: 1000,
-        timingFunction: 'ease'
+        delay: 2000,
+        duration: 400,
+        timingFunction: 'forwards'
     },
 }
-export default Rotate1;
+export default Rotate1

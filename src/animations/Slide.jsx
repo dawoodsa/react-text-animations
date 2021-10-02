@@ -9,15 +9,15 @@ function Slide(props) {
 
 Slide.propTypes = {
     target: PropTypes.string.isRequired,
-    alternatingText: PropTypes.array.isRequired,
+    text: PropTypes.array.isRequired,
 }
 
 Slide.defaultProps = {
     id: '',
     cname: 'text-animation-slide',
     animation: {
-        delay: 2500,
-        duration: 2000,
+        delay: 1000,
+        duration: 1000,
         timingFunction: 'ease'
     },
 }

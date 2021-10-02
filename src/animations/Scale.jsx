@@ -7,15 +7,15 @@ function Scale(props) {
 }
 Scale.propTypes = {
     target: PropTypes.string.isRequired,
-    alternatingText: PropTypes.array.isRequired,
+    text: PropTypes.array.isRequired,
 }
 
 Scale.defaultProps = {
     id: '',
     cname: 'text-animation-Scale',
     animation: {
-        delay: 2000,
-        duration: 400,
+        delay: 1000,
+        duration: 1000,
         timingFunction: 'forwards'
     },
 }

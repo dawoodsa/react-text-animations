@@ -5,11 +5,11 @@
 	.words-wrapper {
 		perspective: 300px;
 
-        .visible {
+        .show {
             animation: zoom-in var(--duration) var(--timingFunction);
         }
 
-        .hidden {
+        .hide {
             animation: zoom-out var(--duration) var(--timingFunction);
         }
 	}

@@ -1,6 +1,6 @@
 {
-  "name": "react-text-animation",
-  "version": "1.0.0",
+  "name": "react-text-animations",
+  "version": "1.1.0",
   "description": "A Simple and Flexible Way to add Eye catching Text Animations",
   "main": "./dist/bundle.js",
   "repository": {
@@ -8,11 +8,15 @@
     "url": "git+https://github.com/dawoodsa/react-text-animation.git"
   },
   "scripts": {
-    "develop": "rollup -c rollup.config.js -w"
+    "develop": "rollup -c rollup.config.js -w",
+    "build": "rollup -c rollup.config.js"
   },
   "keywords": [
     "react",
     "text",
+    "animation",
+    "component",
+    "flexible",
     "animations",
     "transitions"
   ],

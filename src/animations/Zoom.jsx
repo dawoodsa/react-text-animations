@@ -10,15 +10,15 @@ function Zoom(props) {
 
 Zoom.propTypes = {
     target: PropTypes.string.isRequired,
-    alternatingText: PropTypes.array.isRequired,
+    text: PropTypes.array.isRequired,
 }
 
 Zoom.defaultProps = {
     id: '',
     cname: 'text-animation-zoom',
     animation: {
-        delay: 2500,
-        duration: 800,
+        delay: 1000,
+        duration: 1000,
         timingFunction: 'linear'
     },
 }
