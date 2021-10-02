@@ -20,7 +20,7 @@ const AnimatedText = () => {
 export default AnimatedText;
 ```
 
-You can choose from a bunch of animations by writing `TextAnimation.animationName`, In the example above we used the **Slide** animation. [Go to Real Cool Heading section](#) is the list of animations
+You can choose from a bunch of animations by typing `TextAnimation.animationName`, In the example above we used the **Slide** animation. Below is a list of the animations that can be used.
 
 
 
