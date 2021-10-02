@@ -1,10 +1,10 @@
 # react-text-animations
 A variety of text animations ready to be applied.
 
-# Installation
+## Installation
 `npm i react-text-animations`
 
-# Basic Usage
+## Basic Usage
 ```javascript
 
 import TextAnimation from "react-text-animations";
@@ -24,9 +24,9 @@ You can choose from a bunch of animations by writing `TextAnimation.animationNam
 
 
 
-# Animations List
+## Animations List
 
-Animations are separated to **2    **
+Animations are separated to **2 types** :
 
 1. Word
     * Push
@@ -41,3 +41,36 @@ Animations are separated to **2    **
     * Scale
     
 *Please feel free to suggest better names*
+
+
+
+## Properties
+
+For more flexibility, you can play with the **animation properties**, these properties are called from the animation prop. `<TextAnimation.Slide animation={{delay:1000}}>`
+
+| Prop  | Description |
+| ------------- | ------------- |
+| delay  | how long to wait between transitions in millisecond  |
+| duration  | how long a transition will take in millisecond  |
+| timingFunction | how the animation progresses through the animation **e.g(ease-in)**|
+| cname | use this className to add your custom styling |
+| id | adding an *id* is also recommended for multiple text animations in a page. |
+
+
+```javascript
+
+<TextAnimation.Slide 
+    target="Merciful" 
+    text={['Gracious', 'Peace', 'Knowing']} 
+    cname="textAnimation"
+    id="textAnimation__slide"
+    animation={{
+        duration:1000,
+        delay:2000,
+        timingFunction:'ease-out'
+    }}
+>
+    Allah is The Merciful
+</TextAnimation.Slide>
+
+```
