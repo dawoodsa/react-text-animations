@@ -15,7 +15,7 @@ Rotate2.defaultProps = {
     cname: 'text-animation-Rotate2',
     animation: {
         delay: 1000,
-        duration: 500,
+        duration: 400,
         timingFunction: 'forwards'
     },
 }
