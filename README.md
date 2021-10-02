@@ -60,6 +60,9 @@ For more flexibility, you can play with the **animation properties**, these prop
 | id | adding an *id* is also recommended for multiple text animations in a page. |
 
 
+
+
+
 ```javascript
 
 <TextAnimation.Slide 
