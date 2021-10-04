@@ -73,7 +73,7 @@ For more flexibility, you can play with the **animation properties**, these prop
     animation={{
         duration:1000,
         delay:2000,
-        timingFunction:'ease-out'
+        timingFunction:'ease-out',
         loop:true
     }}
 >
