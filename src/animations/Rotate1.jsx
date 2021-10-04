@@ -16,7 +16,7 @@ Rotate1.defaultProps = {
     animation: {
         delay: 2000,
         duration: 400,
-        timingFunction: 'forwards',
+        timingFunction: 'ease',
     },
     loop:true,
 }

@@ -1,16 +1,16 @@
 .scale {
     --duration:0s;
-	--timingFunction:forwards;
+	--timingFunction:ease;
 
 	i {
 		transform: scale(0);
 
 		&.in {
-			 animation: scale-up var(--duration) var(--timingFunction);
+			 animation: scale-up var(--duration) var(--timingFunction) forwards;
 		}
 
 		&.out {
-			 animation: scale-down var(--duration) var(--timingFunction);
+			 animation: scale-down var(--duration) var(--timingFunction) forwards;
 		}
 	}
 }

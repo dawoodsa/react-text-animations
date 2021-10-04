@@ -1,6 +1,6 @@
 .rotate1 {
     --duration:0s;
-	--timingFunction:forwards;
+	--timingFunction:ease;
 
 	.words-wrapper {
 		perspective: 300px;
@@ -10,11 +10,11 @@
 		transform-style: preserve-3d;
         transform: translateZ(-20px) rotateX(-90deg);
 		&.in {
-            animation : rotate-2-in var(--duration) var(--timingFunction);
+            animation : rotate-2-in var(--duration) var(--timingFunction) forwards;
         }
     
         &.out {
-             animation : rotate-2-out var(--duration) var(--timingFunction);
+             animation : rotate-2-out var(--duration) var(--timingFunction) forwards;
         }
 	}
 
