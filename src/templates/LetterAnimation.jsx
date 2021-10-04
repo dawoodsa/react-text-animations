@@ -5,15 +5,15 @@ import BoilerPlate from './BoilerPlate';
 
 
 
-function LetterAnimation({ name, id, cname, target, text, animation, children }) {
+function LetterAnimation({ name, id, cname, target, text, loop, animation, children }) {
     const { delay, duration, timingFunction } = animation;
     const wordWrapper = useRef(null);
-
+    const showClass = 'in',
+        hideClass = 'out',
+        widthClass = 'relative'
+    const InitState = (index) => text.map((_, i) => (i == index) ? widthClass : '')
+    const [widthState, setWidthState] = useState(InitState(0));
     const [wordIndex, setWordIndex] = useState(0);
-    const InitState = (index) => text.map((_, i) => (i == index) ? 'visible' : '')
-    const [sizeState, setSizeState] = useState(InitState(0));
-    const [opacity, setOpacity] = useState(0);
-
     const [letterState, setLetterState] = useState(() =>
         text.map((word, i) =>
             word.split('').map(() => (i == 0) ? 'in' : 'out')
@@ -23,15 +23,18 @@ function LetterAnimation({ name, id, cname, target, text, animation, children })
 
 
     useEffect(() => {
-        let start = setTimeout(play, delay);
-        let opacity = setTimeout(setOpacity(1), delay);
-        let increment = setTimeout(incrementIndex, delay);
+        let start = setTimeout(() => {
+            if (!loop) {
+                if (nextIndex() != 0) {
+                    play();
+                }
+            } else {
+                play();
+            }
+        }, delay);
 
-        return () => {
-            clearTimeout(increment)
-            clearTimeout(start)
-            clearTimeout(opacity)
-        }
+        return () => clearTimeout(start)
+
     }, [wordIndex])
 
     const setNextLetter = (word, letter, type) => {
@@ -55,17 +58,20 @@ function LetterAnimation({ name, id, cname, target, text, animation, children })
         }, 50)
     }
 
-    const nextIndex = () => (wordIndex == letterState.length - 1) ? 0 : wordIndex + 1;
+    const lastIndex = () => (wordIndex == letterState.length - 1) ? true : false;
+    const nextIndex = () => (lastIndex()) ? 0 : wordIndex + 1;
 
-    const incrementIndex = () => {
+    const updateWord = () => {
         setTimeout(() => {
-            setSizeState(InitState(nextIndex()));
+            setWidthState(InitState(nextIndex()));
         }, duration / 2);
+
         setWordIndex(nextIndex());
     }
     const play = () => {
-        animateWord('out', wordIndex);
-        animateWord('in', nextIndex());
+        animateWord(hideClass, wordIndex);
+        animateWord(showClass, nextIndex());
+        updateWord();
     }
     return (
         <BoilerPlate
@@ -79,8 +85,7 @@ function LetterAnimation({ name, id, cname, target, text, animation, children })
                 {text.map((word, wordIndex) =>
 
                     <span
-                        style={{ opacity: opacity }}
-                        className={`word ${sizeState[wordIndex]}`}
+                        className={`word ${widthState[wordIndex]}`}
                         key={wordIndex}
                     >
                         {word.split('').map((letter, letterIndex) =>

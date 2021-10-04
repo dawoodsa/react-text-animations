@@ -2,39 +2,52 @@
 import React, { useState, useEffect } from 'react'
 import BoilerPlate from './BoilerPlate';
 import SetAnimationProperties from '../ui-components/SetAnimationProperties';
-function WordAnimation({ name, id, cname, target, text, animation, children }) {
+function WordAnimation({ name, id, cname, target, text, animation, loop, children }) {
     const { delay, duration } = animation;
-    const   showClass = 'show',
-            hideClass = 'hide',
-            sizeClass = 'visible';
-    const InitState = (index, showClass, hideClass) => text.map((_, i) => (i == index) ? showClass : hideClass)
+    const showClass = 'show',
+        hideClass = 'hide',
+        widthClass = 'relative';
+    const InitState = (index, showClass, hideClass) => text.map((_, i) => (i == index) ? showClass : hideClass || '')
     const [wordState, setWordState] = useState(InitState(0, showClass, hideClass));
-    const [sizeState, setSizeState] = useState(InitState(0, sizeClass, ''))
+    const [widthState, setWidthState] = useState(InitState(0, widthClass))
 
     useEffect(() => {
-        let start = setTimeout(playNext, delay);
+        let start = setTimeout(() => {
+            if (!loop) {
+                if (nextIndex() != 0) {
+                    play();
+                }
+            } else {
+                play();
+            }
+        }, delay);
+
         return () => clearTimeout(start);
     }, [wordState])
 
     const lastIndex = (i) => (i == wordState.length - 1) ? true : false;
-
-    const getNextIndex = (i) => (lastIndex(i)) ? 0 : i + 1;
-
-    const playNext = () => {
+    const nextIndex = () => {
         const currentIndex = wordState.indexOf(showClass);
-        const nextIndex = getNextIndex(currentIndex);
+        return (lastIndex(currentIndex) == true) ? 0 : currentIndex + 1
+    }
 
+    const updateWord = () => {
+        setWordState(InitState(nextIndex(), showClass, hideClass));
+    }
+    const updateWidth = () => {
         const AnimationsThatNeedADelay = ['flip'];
 
         if (AnimationsThatNeedADelay.includes(name)) {
             setTimeout(() => {
-                setSizeState(InitState(nextIndex, 'visible', ''))
+                setWidthState(InitState(nextIndex(), widthClass))
             }, duration / 2)
         } else {
-            setSizeState(InitState(nextIndex, 'visible', ''))
+            setWidthState(InitState(nextIndex(), widthClass))
         }
-
-        setWordState(InitState(nextIndex, showClass, hideClass));
+    }
+    const play = () => {
+        updateWord();
+        updateWidth();
     }
 
     return (
@@ -49,7 +62,7 @@ function WordAnimation({ name, id, cname, target, text, animation, children }) {
             <SetAnimationProperties animationProps={animation} type="word-ani">
                 {text.map((word, i) =>
                     <span
-                        className={`word ${wordState[i]} ${sizeState[i]}`}
+                        className={`word ${wordState[i]} ${widthState[i]}`}
                         key={i}
                     >{word}</span>
                 )}

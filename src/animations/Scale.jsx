@@ -16,7 +16,8 @@ Scale.defaultProps = {
     animation: {
         delay: 1000,
         duration: 1000,
-        timingFunction: 'forwards'
+        timingFunction: 'forwards',
     },
+    loop:true,
 }
 export default Scale
