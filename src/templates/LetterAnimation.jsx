@@ -33,8 +33,6 @@ function LetterAnimation({ name, id, cname, target, text, loop, animation, child
             }
         }, delay);
 
-
-
         return () => clearTimeout(start)
 
     }, [wordIndex])

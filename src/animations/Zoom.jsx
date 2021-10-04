@@ -19,8 +19,10 @@ Zoom.defaultProps = {
     animation: {
         delay: 1000,
         duration: 1000,
-        timingFunction: 'linear'
+        timingFunction: 'linear',
     },
+
+    loop:true,
 }
 
 export default Zoom;

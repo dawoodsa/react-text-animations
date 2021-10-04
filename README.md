@@ -49,16 +49,16 @@ Animations are separated to **2 types** :
 
 ## Properties
 
-For more flexibility, you can play with the **animation properties**, these properties are called from the animation prop. `<TextAnimation.Slide animation={{delay:1000}}>`
+For more flexibility, you can play with the **animation properties**, these properties are declared in the animation prop. `<TextAnimation.Slide animation={{delay:1000}}>`
 
 | Prop  | Description |
 | ------------- | ------------- |
-| delay  | how long to wait between transitions in millisecond  |
-| duration  | how long a transition will take in millisecond  |
-| timingFunction | how the animation progresses through the animation **e.g(ease-in)**|
+| animation.delay  | how long to wait between transitions in millisecond  |
+| animation.duration  | how long a transition will take in millisecond  |
+| animation.timingFunction | how the animation progresses through the animation **e.g(ease-in)**|
 | cname | use this className to add your custom styling |
 | id | adding an *id* is also recommended for multiple text animations in a page. |
-
+| loop | set it to **false** if you want the animation to run once |
 
 
 
@@ -74,6 +74,7 @@ For more flexibility, you can play with the **animation properties**, these prop
         duration:1000,
         delay:2000,
         timingFunction:'ease-out'
+        loop:true
     }}
 >
     Allah is The Merciful

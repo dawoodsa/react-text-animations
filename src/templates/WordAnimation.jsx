@@ -4,15 +4,24 @@ import BoilerPlate from './BoilerPlate';
 import SetAnimationProperties from '../ui-components/SetAnimationProperties';
 function WordAnimation({ name, id, cname, target, text, animation, loop, children }) {
     const { delay, duration } = animation;
-    const   showClass = 'show',
-            hideClass = 'hide',
-            widthClass = 'relative';
+    const showClass = 'show',
+        hideClass = 'hide',
+        widthClass = 'relative';
     const InitState = (index, showClass, hideClass) => text.map((_, i) => (i == index) ? showClass : hideClass || '')
     const [wordState, setWordState] = useState(InitState(0, showClass, hideClass));
     const [widthState, setWidthState] = useState(InitState(0, widthClass))
 
     useEffect(() => {
-        let start = setTimeout(playNext, delay);
+        let start = setTimeout(() => {
+            if (!loop) {
+                if (nextIndex() != 0) {
+                    play();
+                }
+            } else {
+                play();
+            }
+        }, delay);
+
         return () => clearTimeout(start);
     }, [wordState])
 
@@ -23,13 +32,7 @@ function WordAnimation({ name, id, cname, target, text, animation, loop, childre
     }
 
     const updateWord = () => {
-        if (!loop) {
-            if (nextIndex() != 0) {
-                setWordState(InitState(nextIndex(), showClass, hideClass));
-            }
-        } else {
-            setWordState(InitState(nextIndex(), showClass, hideClass));
-        }
+        setWordState(InitState(nextIndex(), showClass, hideClass));
     }
     const updateWidth = () => {
         const AnimationsThatNeedADelay = ['flip'];
@@ -42,9 +45,9 @@ function WordAnimation({ name, id, cname, target, text, animation, loop, childre
             setWidthState(InitState(nextIndex(), widthClass))
         }
     }
-    const playNext = () => {
-        updateWidth();
+    const play = () => {
         updateWord();
+        updateWidth();
     }
 
     return (

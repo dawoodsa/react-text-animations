@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import BoilerPlate from '../templates/BoilerPlate';
 
 
-function Clip({ id, cname, target, text, animation, children }) {
+function Clip({ id, cname, target, text, loop, animation, children }) {
     const { delay, duration, timingFunction } = animation;
     const [currentWord, setCurrentWord] = useState(text[0]);
     const [wrapperWidth, setWrapperWidth] = useState();
@@ -16,7 +16,7 @@ function Clip({ id, cname, target, text, animation, children }) {
         if (isClipped()) {
             setTimeout(updateWord, duration)
         } else {
-            x = setTimeout(minimizeWidth, delay)
+            x = setTimeout(start, delay)
         }
         return () => clearTimeout(x);
     }, [wrapperWidth])
@@ -26,7 +26,15 @@ function Clip({ id, cname, target, text, animation, children }) {
     }, [currentWord])
 
     const isClipped = () => (wrapperWidth == cursor.current.offsetWidth) ? true : false
-
+    const start = () => {
+        if (!loop) {
+            if (currentWord != text[text.length - 1]) {
+                minimizeWidth();
+            }
+        } else {
+            minimizeWidth();
+        }
+    }
     const maximizeWidth = () => {
         setWrapperWidth(word.current.offsetWidth + 15);
     }
@@ -59,7 +67,7 @@ function Clip({ id, cname, target, text, animation, children }) {
         >
             <span className="words-wrapper" style={wrapperStyle}>
                 <span ref={word}>
-                    <span className="word visible">{currentWord}</span>
+                    <span className="word relative">{currentWord}</span>
                     <span className="cursor" ref={cursor} />
                 </span>
             </span>
@@ -80,8 +88,9 @@ Clip.defaultProps = {
     animation: {
         delay: 1000,
         duration: 500,
-        timingFunction: 'ease'
+        timingFunction: 'ease',
     },
+    loop: true,
 }
 
 export default Clip;

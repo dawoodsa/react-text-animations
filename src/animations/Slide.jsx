@@ -18,7 +18,8 @@ Slide.defaultProps = {
     animation: {
         delay: 1000,
         duration: 1000,
-        timingFunction: 'ease'
+        timingFunction: 'ease',
     },
+    loop:true,
 }
 export default Slide;

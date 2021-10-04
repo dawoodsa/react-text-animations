@@ -16,7 +16,8 @@ Rotate2.defaultProps = {
     animation: {
         delay: 1000,
         duration: 400,
-        timingFunction: 'forwards'
+        timingFunction: 'forwards',
     },
+    loop:true,
 }
 export default Rotate2
