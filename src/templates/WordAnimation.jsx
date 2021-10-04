@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react'
 import BoilerPlate from './BoilerPlate';
 import SetAnimationProperties from '../ui-components/SetAnimationProperties';
-function WordAnimation({ name, id, cname, target, text, animation, children }) {
+function WordAnimation({ name, id, cname, target, text, animation, loop, children }) {
     const { delay, duration } = animation;
-    const   showClass = 'show',
-            hideClass = 'hide',
-            sizeClass = 'visible';
+    const showClass = 'show',
+        hideClass = 'hide',
+        sizeClass = 'visible';
     const InitState = (index, showClass, hideClass) => text.map((_, i) => (i == index) ? showClass : hideClass)
     const [wordState, setWordState] = useState(InitState(0, showClass, hideClass));
     const [sizeState, setSizeState] = useState(InitState(0, sizeClass, ''))
@@ -20,6 +20,15 @@ function WordAnimation({ name, id, cname, target, text, animation, children }) {
 
     const getNextIndex = (i) => (lastIndex(i)) ? 0 : i + 1;
 
+    const updateWord = (nextIndex) => {
+        if (loop == true) {
+            if (nextIndex != 0) {
+                setWordState(InitState(nextIndex, showClass, hideClass));
+            }
+        } else {
+            setWordState(InitState(nextIndex, showClass, hideClass));
+        }
+    }
     const playNext = () => {
         const currentIndex = wordState.indexOf(showClass);
         const nextIndex = getNextIndex(currentIndex);
@@ -34,7 +43,7 @@ function WordAnimation({ name, id, cname, target, text, animation, children }) {
             setSizeState(InitState(nextIndex, 'visible', ''))
         }
 
-        setWordState(InitState(nextIndex, showClass, hideClass));
+        updateWord(nextIndex);
     }
 
     return (
