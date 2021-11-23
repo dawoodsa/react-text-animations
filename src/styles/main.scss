@@ -1,16 +1,4 @@
 
-
-$color-1: #aebcb9; // Tower Gray
-$color-2: #0096a7; // Bondi Blue
-$color-3: #0d0d0d; // Cod Gray
-
-// center vertically and/or horizontally an absolute positioned element
-body{
-	font-size: 4rem;
-	box-sizing: border-box;
-}
-
-
 .words-wrapper {
 
 	display: inline-block;
@@ -63,23 +51,3 @@ body{
 // @import './loading';
 // @import './type';
 
-
-// @mixin center($xy:xy) {
-//     @if $xy == xy {
-//       left: 50%;
-//       top: 50%;
-//       bottom: auto;
-//       right: auto;
-//       @include transform(translateX(-50%) translateY(-50%));
-//     }
-//     @else if $xy == x {
-//       left: 50%;
-//       right: auto;
-//       @include transform(translateX(-50%));
-//     }
-//     @else if $xy == y {
-//       top: 50%;
-//       bottom: auto;
-//       @include transform(translateY(-50%));
-//     }
-//   }

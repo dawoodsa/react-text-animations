@@ -74,8 +74,8 @@ For more flexibility, you can play with the **animation properties**, these prop
         duration:1000,
         delay:2000,
         timingFunction:'ease-out',
-        loop:true
     }}
+    loop={false}
 >
     Allah is The Merciful
 </TextAnimation.Slide>
